@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+
+<title>Simone Quiz</title>
+
+<style>
+body {
+background-color: #ff8da1;
+font-family: Helvetica;}
+
+h3 {
+  font-family: "Sixtyfour Convergence", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;}
+
+
+#quiz {
+width: 95%;
+max-width: auto;
+border: 1px gray solid;
+margin: auto;
+padding: 10px;
+background-color: #FFC4DA;
+border-radius: 10px;}
+
+#header {
+margin-top: 0;
+border: 1px gray solid;
+height: 500px;
+background: beige;
+background-image: url("homepage.jpg");
+background-size: 100% 100%;
+color: white; 
+border-radius: 10px;
+}
+
+
+input[name="shoe"] {
+  display: none;}
+
+input:checked + label img {
+  border: 5px solid rosybrown;}
+
+label {
+display: block;}
+
+button {
+background-color: pink;
+width: 100px;
+margin-top: 20px;}
+
+button:hover { background-color: #fffdd2;
+ }
+
+
+.image-container {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    padding: 10px;}
+
+.image-container label {
+    display: inline-block;
+    width: 100px; 
+    height: 100px; 
+    overflow: hidden; 
+    border-radius: 10px; 
+    text-align: right; }
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 10px; }
+
+.results { text-align:center; }
+
+.results p { font-size:40px;
+font-family: "Sixtyfour Convergence", sans-serif; }
+
+</style>
+
+</head>
+
+<body>
+
+<div id="quiz"> 
+<form id="base">
+
+<div class="container-fluid hero p-5 d-flex align-items-center justify-content-center" id="header"> 
+</div> 
+
+<div>
+<h3>What is Simone's major?</h3>
+<label for="major_string"><input type="radio" name="major" value="0" id="major_string" /> Theatre</label>
+<label for="major_join"><input type="radio" name="major" value="0" id="major_join" /> Mass Communication</label>
+<label for="major_info"><input type="radio" name="major" value="20" id="major_info" /> Digital Media Innovation</label>
+<label for="major_condition"><input type="radio" name="major" value="0" id="major_condition"/> Dance</label>
+</div>
+
+<div>
+<h3>What does Simone want to go into? </h3>
+<label for="into_string"><input type="radio" name="into" value="20" id="into_string"/> Digital Marketing</label>
+<label for="into_join"><input type="radio" name="into" value="0" id="into_join"/> UX/UI design </label>
+<label for="into_info"><input type="radio" name="into" value="0" id="into_info" /> Cybersecurity </label>
+<label for="into_condition"><input type="radio" name="into" value="0" id="into_condition" /> Data Science</label>
+</div>
+
+<div>
+<h3>What is Simone's drag name?</h3>
+<label for="drag_string"><input type="radio" name="drag" value="0" id="drag_string" /> TS Symone </label>
+<label for="drag_join"><input type="radio" name="drag" value="20" id="drag_join" /> Claw Madia </label>
+<label for="drag_info"><input type="radio" name="drag" value="0" id="drag_info" /> Juice </label>
+<label for="drag_condition"><input type="radio" name="drag" value="0" id="drag_condition" /> Chandini Dupree Dior Diamond DELuXXX </label>
+</div>
+
+
+<h3>What is Simone's favorite shoe?</h3>
+<div class="image-container" >
+<input name="shoe" value="0" type="radio" id="one" /> <label for="one"> <img src="IMG_1888.jpg" alt="lime green croc"></label>
+<input name="shoe" value="0" type="radio" id="two" /><label for="two"> <img src="IMG_1887.jpg" alt="bunny slipper"> </label>
+<input name="shoe" value="0" type="radio" id="three" /> <label for="three"><img src="IMG_1889.jpg" alt="brown converse" ></label>
+<input name="shoe" value="20"  type="radio" id="four" /><label for="four"><img src="IMG_1886.jpg" alt="barefoot"></label>
+</div>
+
+<div>
+<h3> What is the color of Simone's eyes?</h3>
+<label for="eye_string"><input type="radio" name="eye" value="20" id="eye_string" /> Brown</label>
+<label for="eye_join"><input type="radio" name="eye" value="0" id="eye_join" /> Blue</label>
+<label for="eye_info"><input type="radio" name="eye" value="0" id="eye_info" /> Green</label>
+<label for="eye_condition"><input type="radio" name="eye"  value="0" id="eye_condition" /> Hazel</label>
+</div>
+
+<div class="results">
+<button type="submit" value="Submit">Submit</button>
+
+
+
+<p> <span id="grade"></span></p>
+<p id="grade2"></p>
+<h2 id="selected"></h2>
+</div>
+
+</form>
+</div>
+
+
+
+<script>
+document.getElementById("base").onsubmit = function() {
+   
+    const major = parseInt(document.querySelector('input[name="major"]:checked')?.value) || 0;
+    const into = parseInt(document.querySelector('input[name="into"]:checked')?.value) || 0;
+    const drag = parseInt(document.querySelector('input[name="drag"]:checked')?.value) || 0;
+    const shoe = parseInt(document.querySelector('input[name="shoe"]:checked')?.value) || 0;
+    const eye = parseInt(document.querySelector('input[name="eye"]:checked')?.value) || 0;
+
+    if (
+        document.querySelector('input[name="major"]:checked') &&
+        document.querySelector('input[name="into"]:checked') &&
+        document.querySelector('input[name="drag"]:checked') &&
+        document.querySelector('input[name="shoe"]:checked') &&
+        document.querySelector('input[name="eye"]:checked')
+    ) {
+       
+        const result = major + into + drag + shoe + eye;
+        document.getElementById("grade").innerHTML = result;
+
+        let result2;
+        if (result === 0) {
+            result2 = "wow... just wow... ): ";
+        } else if (result === 20) {
+            result2 = "0_0 Did you even try?";
+        } else if (result === 40) {
+            result2 = "Try again :///";
+        } else if (result === 60) {
+            result2 = "Awwww, you almost got it :l" 
+        } else if (result === 80) {
+            result2 = "OKAY! You're good enough :)";
+        } else if (result === 100) {
+            result2 = "YOU KNOW ME SO WELL!";
+        }
+        document.getElementById("grade2").innerHTML = result2;
+    } else {
+        
+        alert("HEY DIVA! You didn't finish your work...");
+    }
+
+    return false; 
+}
+</script>
+
+</body>
+
+</html>
